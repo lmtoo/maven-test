@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.juvenxu.mvnbook.account</groupId>
+	<artifactId>account-aggregator</artifactId>
+	<version>1.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Account Aggregator</name>
+	<modules>
+		<module>account-parent</module>
+		<module>account-captcha</module>
+		<module>account-email</module>
+		<module>account-persist</module>
+		<module>account-service</module>
+		<module>account-web</module>
+	</modules>
+
+	<properties>
+		<!-- scm location -->
+		<scm.host>localhost:8443</scm.host>
+		<scm.name>account</scm.name>
+	</properties>
+
+
+	<scm>
+		<connection>scm:svn:https://${scm.host}/svn/${scm.name}/trunk</connection>
+		<developerConnection>scm:svn:https://${scm.host}/svn/${scm.name}/trunk</developerConnection>
+		<url>https://${scm.host}/svn/${scm.name}/trunk</url>
+	</scm>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagBase>https://${scm.host}/svn/${scm.name}/tags/</tagBase>
+					<branchBase>https://${scm.host}/svn/${scm.name}/branches</branchBase>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Releases Repository</name>
+			<url>http://${proxy.host}/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshots Repository</name>
+			<url>http://${proxy.host}/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

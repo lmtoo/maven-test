@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.juvenxu.mvnbook.account</groupId>
+		<artifactId>account-parent</artifactId>
+		<version>1.1-SNAPSHOT</version>
+		<relativePath>../account-parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>account-web</artifactId>
+	<packaging>war</packaging>
+	<name>Account Web</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>account-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>account</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.4.9</version>
+				<configuration>
+					<container>
+						<containerId>tomcat7x</containerId>
+						<home>D:\apache-tomcat-7.0.67-windows-x64\apache-tomcat-7.0.67</home>
+					</container>
+					<configuration>
+						<type>standalone</type>
+						<home>${project.build.directory}/tomcat7x</home>
+					</configuration>
+				</configuration>
+				
+				<!-- <configuration>
+					<container>
+						<containerId>tomcat7x</containerId>
+						<home>D:\apache-tomcat-7.0.67-windows-x64\apache-tomcat-7.0.67</home>
+					</container>
+					<configuration>
+						<type>existing</type>
+						<home>D:\apache-tomcat-7.0.67-windows-x64\apache-tomcat-7.0.67</home>
+					</configuration>
+				</configuration> -->
+				
+				 <!-- <configuration>
+					<container>
+						<containerId>tomcat7x</containerId>
+						<type>remote</type>
+					</container>
+					<configuration>
+						<type>runtime</type>
+						<properties>
+							<cargo.remote.username>admin</cargo.remote.username>
+							<cargo.remote.password>admin123</cargo.remote.password>
+							<cargo.tomcat.manager.url>http://localhost:8080/manager</cargo.tomcat.manager.url>
+						</properties>
+					</configuration>
+				</configuration> -->
+			</plugin>
+		</plugins>
+	</build>
+</project>

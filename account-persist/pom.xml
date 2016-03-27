@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.juvenxu.mvnbook.account</groupId>
+		<artifactId>account-parent</artifactId>
+		<version>1.1-SNAPSHOT</version>
+		<relativePath>../account-parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>account-persist</artifactId>
+	<name>Account Persist</name>
+
+	<properties>
+		<hibernate.version>4.3.11.Final</hibernate.version>
+		<druid.version>1.0.18</druid.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<db.driver>com.mysql.jdbc.Driver</db.driver>
+				<db.url>jdbc:mysql://${proxy.host}/test</db.url>
+				<db.username>dev</db.username>
+				<db.password>dev-pwd</db.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<db.driver>com.mysql.jdbc.Driver</db.driver>
+				<db.url>jdbc:mysql://${proxy.host}/test</db.url>
+				<db.username>test</db.username>
+				<db.password>test-pwd</db.password>
+			</properties>
+		</profile>
+	</profiles>
+</project>

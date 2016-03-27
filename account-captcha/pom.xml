@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.juvenxu.mvnbook.account</groupId>
+		<artifactId>account-parent</artifactId>
+		<version>1.1-SNAPSHOT</version>
+		<relativePath>../account-parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>account-captcha</artifactId>
+	<name>Account Captcha</name>
+
+	<properties>
+		<kaptcha.version>2.3</kaptcha.version>
+		<scm.name>account-captcha</scm.name>
+	</properties>
+
+	<dependencies> 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency> 
+			<groupId>com.google.code.kaptcha</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>${kaptcha.version}</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+	</dependencies>
+</project>
